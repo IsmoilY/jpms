@@ -1,16 +1,12 @@
 package uz.jpms.core.dao;
 
+import uz.jpms.core.domain.BaseEntity;
+
 import java.util.*;
 
-public abstract class AbstractDao<T, ID> implements BaseDao<T, ID> {
+public abstract class AbstractDao<T extends BaseEntity<ID>, ID> implements BaseDao<T, ID> {
 
     protected final Map<ID, T> storage = new HashMap<>(100);
-
-    protected long idGenerator = 0L;
-
-    public long generateLongID() {
-        return idGenerator++;
-    }
 
     @Override
     public Optional<T> findById(ID id) {
@@ -23,8 +19,18 @@ public abstract class AbstractDao<T, ID> implements BaseDao<T, ID> {
     }
 
     @Override
+    public T save(T t) {
+        if (Objects.isNull(t.getId())) {
+            t.setId(t.generateId());
+        }
+        return storage.put(t.getId(), t);
+    }
+
+    @Override
     public List<T> saveAll(List<T> list) {
-        list.forEach(this::save);
+        for (T t : list) {
+            save(t);
+        }
         return list;
     }
 

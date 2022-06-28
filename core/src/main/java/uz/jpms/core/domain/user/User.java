@@ -1,6 +1,9 @@
 package uz.jpms.core.domain.user;
 
-public class User {
+import uz.jpms.core.domain.BaseEntity;
+import uz.jpms.core.util.EntityUtil;
+
+public class User implements BaseEntity<Long> {
 
     private Long id;
     private String username;
@@ -8,10 +11,17 @@ public class User {
     private String name;
     private UserType type;
 
+    @Override
+    public Long generateId() {
+        return EntityUtil.generateLongID();
+    }
+
+    @Override
     public Long getId() {
         return id;
     }
 
+    @Override
     public void setId(Long id) {
         this.id = id;
     }

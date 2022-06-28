@@ -1,6 +1,9 @@
 package uz.jpms.core.domain.book;
 
-public class Book {
+import uz.jpms.core.domain.BaseEntity;
+import uz.jpms.core.util.EntityUtil;
+
+public class Book implements BaseEntity<Long> {
 
     private Long id;
     private String title;
@@ -13,10 +16,17 @@ public class Book {
 
     private Integer quantity = 0;
 
+    @Override
+    public Long generateId() {
+        return EntityUtil.generateLongID();
+    }
+
+    @Override
     public Long getId() {
         return id;
     }
 
+    @Override
     public void setId(Long id) {
         this.id = id;
     }
