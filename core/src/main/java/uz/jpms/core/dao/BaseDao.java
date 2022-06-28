@@ -9,9 +9,9 @@ public interface BaseDao<T, ID> {
 
     List<T> findAll();
 
-    T save();
+    T save(T t);
 
-    List<T> saveAll();
+    List<T> saveAll(List<T> list);
 
     void deleteById(ID id);
 
