@@ -3,6 +3,8 @@ package uz.jpms.core.domain.book;
 import uz.jpms.core.domain.BaseEntity;
 import uz.jpms.core.util.EntityUtil;
 
+import java.util.Objects;
+
 public class Book implements BaseEntity<Long> {
 
     private Long id;
@@ -88,6 +90,19 @@ public class Book implements BaseEntity<Long> {
             throw new IllegalArgumentException("Quantity of a book cannot be less than 1");
         }
         this.quantity = quantity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(id, book.id) && Objects.equals(title, book.title) && Objects.equals(isbn, book.isbn) && Objects.equals(publishedAt, book.publishedAt) && Objects.equals(author, book.author) && Objects.equals(genre, book.genre) && Objects.equals(category, book.category);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, isbn, publishedAt, author, genre, category);
     }
 
     @Override
