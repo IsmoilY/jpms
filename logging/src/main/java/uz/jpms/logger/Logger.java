@@ -1,4 +1,4 @@
-package uz.jpms.logger.console;
+package uz.jpms.logger;
 
 public interface Logger {
 

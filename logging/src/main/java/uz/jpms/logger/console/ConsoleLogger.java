@@ -1,5 +1,7 @@
 package uz.jpms.logger.console;
 
+import uz.jpms.logger.Logger;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

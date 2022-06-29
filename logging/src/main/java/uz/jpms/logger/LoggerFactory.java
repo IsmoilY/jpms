@@ -1,11 +1,10 @@
 package uz.jpms.logger;
 
 import uz.jpms.logger.console.ConsoleLogger;
-import uz.jpms.logger.console.Logger;
 
 public class LoggerFactory {
 
-    public static Logger create(Class<Object> toLog) {
+    public static Logger create(Class<?> toLog) {
         return new ConsoleLogger(toLog.getSimpleName());
     }
 
