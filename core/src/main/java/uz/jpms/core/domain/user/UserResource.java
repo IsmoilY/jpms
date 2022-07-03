@@ -47,4 +47,5 @@ public class UserResource implements BaseEntity<Long> {
     public Set<Book> getBooks() {
         return books;
     }
+
 }

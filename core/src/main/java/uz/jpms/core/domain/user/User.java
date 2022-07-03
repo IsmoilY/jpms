@@ -10,6 +10,7 @@ public class User implements BaseEntity<Long> {
     private String password;
     private String name;
     private UserType type;
+    private Boolean isActive = Boolean.FALSE;
 
     @Override
     public Long generateId() {
@@ -58,13 +59,23 @@ public class User implements BaseEntity<Long> {
         this.type = type;
     }
 
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
                 ", type=" + type +
+                ", isActive=" + isActive +
                 '}';
     }
 }
