@@ -3,8 +3,8 @@ package uz.jpms.report;
 import uz.jpms.core.domain.book.Book;
 import uz.jpms.core.domain.user.User;
 
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public interface UserReporter {
 
@@ -12,6 +12,6 @@ public interface UserReporter {
 
     Integer countInActiveUsers();
 
-    Map<User, List<Book>> userBooks();
+    Map<User, Set<Book>> userBooks();
 
 }
