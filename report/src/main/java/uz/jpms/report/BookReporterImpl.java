@@ -1,7 +1,6 @@
 package uz.jpms.report;
 
 import uz.jpms.core.domain.book.Book;
-import uz.jpms.core.domain.book.BookGenre;
 import uz.jpms.core.service.BookService;
 
 import java.util.List;
@@ -18,7 +17,7 @@ public class BookReporterImpl implements BookReporter {
 
     @Override
     public Map<String, Integer> booksByGenre() {
-        Map<BookGenre, List<Book>> collect = service.findAll().stream().collect(Collectors.groupingBy(Book::getGenre));
+        var collect = service.findAll().stream().collect(Collectors.groupingBy(Book::getGenre));
         return collect.entrySet()
                 .stream()
                 .collect(Collectors.toMap(key -> key.getKey().getName(), val -> val.getValue().size()));
@@ -26,7 +25,7 @@ public class BookReporterImpl implements BookReporter {
 
     @Override
     public Map<String, Integer> booksByAuthor() {
-        Map<String, List<Book>> collect = service.findAll().stream().collect(Collectors.groupingBy(Book::getAuthor));
+        var collect = service.findAll().stream().collect(Collectors.groupingBy(Book::getAuthor));
         return collect.entrySet()
                 .stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, val -> val.getValue().size()));
