@@ -1,15 +1,19 @@
 package uz.jpms.report;
 
+import uz.jpms.core.service.BookService;
+import uz.jpms.core.service.UserResourceService;
+import uz.jpms.core.service.UserService;
+
 public class ReportFactory {
 
-    private static BookReporter bookReporter;
-    private static UserReporter userReporter;
+    private static BookReporter bookReporter = new BookReporterImpl(BookService.provide());
+    private static UserReporter userReporter = new UserReporterImpl(UserService.provide(), UserResourceService.provide());
 
-    static BookReporter createBookReporter() {
+    public static BookReporter createBookReporter() {
         return bookReporter;
     }
 
-    static UserReporter createUserReporter() {
+    public static UserReporter createUserReporter() {
         return userReporter;
     }
 
