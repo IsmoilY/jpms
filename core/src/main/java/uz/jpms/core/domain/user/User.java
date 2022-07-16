@@ -3,6 +3,8 @@ package uz.jpms.core.domain.user;
 import uz.jpms.core.domain.BaseEntity;
 import uz.jpms.core.util.EntityUtil;
 
+import java.util.Objects;
+
 public class User implements BaseEntity<Long> {
 
     private Long id;
@@ -65,6 +67,19 @@ public class User implements BaseEntity<Long> {
 
     public void setActive(Boolean active) {
         isActive = active;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(name, user.name) && type == user.type && Objects.equals(isActive, user.isActive);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, password, name, type, isActive);
     }
 
     @Override

@@ -1,13 +1,18 @@
 package uz.jpms.core.service;
 
+import uz.jpms.core.dao.UserDao;
 import uz.jpms.core.domain.user.User;
-import uz.jpms.core.domain.user.UserResource;
+import uz.jpms.core.service.impl.UserServiceImpl;
 
 import java.util.List;
 
 public interface UserService {
 
-    UserResource getResource();
+    UserService service = new UserServiceImpl(UserDao.provide());
+
+    static UserService provide() {
+        return service;
+    }
 
     User createOrUpdate(User user);
 

@@ -1,39 +1,46 @@
 package uz.jpms.core.service.impl;
 
+import uz.jpms.core.dao.UserDao;
 import uz.jpms.core.domain.user.User;
-import uz.jpms.core.domain.user.UserResource;
 import uz.jpms.core.service.UserService;
 
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    @Override
-    public UserResource getResource() {
-        return null;
+
+    private final UserDao dao;
+
+    public UserServiceImpl(UserDao dao) {
+        this.dao = dao;
     }
 
     @Override
     public User createOrUpdate(User user) {
-        return null;
+        return dao.save(user);
     }
 
     @Override
     public User findById(Long userId) {
-        return null;
+        return dao.findById(userId).orElseThrow();
     }
 
+    // just for simulation
     @Override
     public User findByUsername(String username) {
-        return null;
+        return findAll()
+                .stream()
+                .filter(user -> user.getUsername().equals(username))
+                .findAny()
+                .orElseThrow();
     }
 
     @Override
     public List<User> findAll() {
-        return null;
+        return dao.findAll();
     }
 
     @Override
     public void delete(Long userId) {
-
+        dao.deleteById(userId);
     }
 }

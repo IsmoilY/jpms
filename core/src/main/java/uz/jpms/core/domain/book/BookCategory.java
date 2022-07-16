@@ -8,6 +8,13 @@ public class BookCategory implements BaseEntity<Long> {
     private Long id;
     private String name;
 
+    public BookCategory() {
+    }
+
+    public BookCategory(String name) {
+        this.name = name;
+    }
+
     @Override
     public Long generateId() {
         return EntityUtil.generateLongID();

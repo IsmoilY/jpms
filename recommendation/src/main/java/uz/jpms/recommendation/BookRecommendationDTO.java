@@ -19,4 +19,12 @@ public class BookRecommendationDTO {
     public Integer getRate() {
         return rate;
     }
+
+    @Override
+    public String toString() {
+        return "BookRecommendationDTO{" +
+                "book=" + book +
+                ", rate=" + rate +
+                '}';
+    }
 }

@@ -8,6 +8,13 @@ public class BookGenre implements BaseEntity<Long> {
     private Long id;
     private String name;
 
+    public BookGenre() {
+    }
+
+    public BookGenre(String name) {
+        this.name = name;
+    }
+
     @Override
     public Long generateId() {
         return EntityUtil.generateLongID();
