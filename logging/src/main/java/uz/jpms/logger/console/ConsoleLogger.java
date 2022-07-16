@@ -13,6 +13,10 @@ public class ConsoleLogger implements Logger {
         return LocalDateTime.now().format(DateTimeFormatter.ofPattern(DATE_TIME_FORM));
     }
 
+    /**
+     * name of a class using logger
+     * to identify where from logs generated
+     */
     private final String name;
 
     public ConsoleLogger(String name) {
@@ -21,12 +25,12 @@ public class ConsoleLogger implements Logger {
 
     @Override
     public void info(String message) {
-        System.out.println(getCurrentTime() + " | " + name + " :  " + message);
+        System.out.println(getCurrentTime() + " | INFO | " + name + " :  " + message);
     }
 
     @Override
     public void error(String message) {
-        System.err.println(getCurrentTime() + " | " + name + " :  " + message);
+        System.err.println(getCurrentTime() + " | ERROR | " + name + " :  " + message);
     }
 
 }
