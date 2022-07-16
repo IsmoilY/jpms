@@ -6,7 +6,9 @@ import java.util.*;
 
 public abstract class AbstractDao<T extends BaseEntity<ID>, ID> implements BaseDao<T, ID> {
 
-    protected final Map<ID, T> storage = new HashMap<>(100);
+    private static final int INITIAL_CAPACITY = 100;
+
+    protected final Map<ID, T> storage = new HashMap<>(INITIAL_CAPACITY);
 
     @Override
     public Optional<T> findById(ID id) {
