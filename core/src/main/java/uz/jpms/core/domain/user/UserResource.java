@@ -3,8 +3,10 @@ package uz.jpms.core.domain.user;
 import uz.jpms.core.domain.BaseEntity;
 import uz.jpms.core.domain.book.Book;
 import uz.jpms.core.util.EntityUtil;
+import uz.jpms.notification.Notifier;
 
 import java.util.HashSet;
+import java.util.ServiceLoader;
 import java.util.Set;
 
 public class UserResource implements BaseEntity<Long> {
@@ -15,6 +17,11 @@ public class UserResource implements BaseEntity<Long> {
 
     public void addBook(Book book) {
         books.add(book);
+
+        for (Notifier notifier : ServiceLoader.load(Notifier.class)) {
+            notifier.sendMessage();
+        }
+
     }
 
     public void removeBook(Book book) {
