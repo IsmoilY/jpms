@@ -1,5 +1,5 @@
 # Book store
- Sample project to demonstrate and learn Java module system(Project Jigsaw)
+ Sample project to demonstrate and learn Java module system(Project Jigsaw)  
  Just for learning, all files just for simulation
 
 ## Modules
