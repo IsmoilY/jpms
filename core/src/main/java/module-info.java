@@ -2,7 +2,7 @@ module uz.jpms.core {
 
     uses uz.jpms.notification.Notifier;
 
-    requires uz.jpms.logging;
+    requires transitive uz.jpms.logging;
     requires uz.jpms.notification;
     requires uz.jpms.smsnotification;
     requires uz.jpms.mailnotification;
